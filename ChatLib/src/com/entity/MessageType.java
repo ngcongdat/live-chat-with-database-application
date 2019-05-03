@@ -5,10 +5,12 @@
  */
 package com.entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tiny
  */
-public class MessageType {
-    
+public enum MessageType implements Serializable {
+    LOGIN , MESSAGE, LOGOUT
 }

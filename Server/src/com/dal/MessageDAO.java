@@ -5,10 +5,13 @@
  */
 package com.dal;
 
+import com.entity.MessageDetail;
+
 /**
  *
  * @author tiny
  */
 public class MessageDAO {
+    
     
 }
