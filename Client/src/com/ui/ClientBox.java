@@ -152,6 +152,7 @@ public class ClientBox extends javax.swing.JFrame {
             try {
                 Client c = new Client(txtUsername.getText(), "");
                 Server server = new Server(txtHostIP.getText(), Integer.valueOf(txtPort.getText()));
+                clientThread = new ClientThread(server, txtContent);
                 // Send information of user to server and save information of this user to database
                 // If user exists in the system already -> do nothing
                 Users u = new Users(txtUsername.getText(), txtUsername.getText());
@@ -171,7 +172,7 @@ public class ClientBox extends javax.swing.JFrame {
         try {
             // Send a message to server
             String from = txtUsername.getText();
-            String to =clientThread.getServer().getHost();
+            String to = clientThread.getServer().getHost();
             String content = txtMessage.getText();
             MessageType type = MessageType.MESSAGE;
             MessageDetail m = new MessageDetail(from, to, new Date(), content, type);

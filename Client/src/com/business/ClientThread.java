@@ -53,7 +53,6 @@ public class ClientThread implements Runnable, Serializable {
         try {
             this.txtContent = txtContent;
             this.server = server;
-            /*connect to server and get input/output stream here*/
             socket = new Socket(server.getHost(), server.getPort());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
             oos = new ObjectOutputStream(dos);
@@ -67,6 +66,7 @@ public class ClientThread implements Runnable, Serializable {
         try {
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             ois = new ObjectInputStream(dis);
+            // Receive message from server
             while (true) {
                 Object obj = ois.readObject();
                 if (obj instanceof MessageDetail) {
@@ -87,7 +87,7 @@ public class ClientThread implements Runnable, Serializable {
         oos.writeObject(line);
         if (line instanceof MessageDetail) {
             MessageDetail m = (MessageDetail) line;
-            txtContent.append("\nMe:"+m.getContent());
+            txtContent.append("\nMe:" + m.getContent());
         }
     }
 
