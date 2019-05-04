@@ -5,6 +5,17 @@
  */
 package com.ui;
 
+import com.business.ClientThread;
+import com.entity.Client;
+import com.entity.MessageDetail;
+import com.entity.MessageType;
+import com.entity.Server;
+import com.entity.Users;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tiny
@@ -51,8 +62,19 @@ public class ClientBox extends javax.swing.JFrame {
         jLabel3.setText("Port");
 
         btnConnect.setText("Connect");
+        btnConnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConnectActionPerformed(evt);
+            }
+        });
 
         btnSend.setText("Send");
+        btnSend.setEnabled(false);
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
 
         jlStatus.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jlStatus.setText("Disconnected");
@@ -122,6 +144,41 @@ public class ClientBox extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    ClientThread clientThread = null;
+
+    private void btnConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectActionPerformed
+        if (clientThread == null) {
+            try {
+                Client c = new Client(txtUsername.getText(), "");
+                Server server = new Server(txtHostIP.getText(), Integer.valueOf(txtPort.getText()));
+                // Send information of user to server and save information of this user to database
+                // If user exists in the system already -> do nothing
+                Users u = new Users(txtUsername.getText(), txtUsername.getText());
+                clientThread.send(u);
+                Thread t = new Thread(clientThread);
+                t.start();
+                btnSend.setEnabled(true);
+                jlStatus.setText("Connected to server");
+                btnConnect.setEnabled(false);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(ClientBox.this, e);
+            }
+        }
+    }//GEN-LAST:event_btnConnectActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        try {
+            // Send a message to server
+            String from = txtUsername.getText();
+            String to =clientThread.getServer().getHost();
+            String content = txtMessage.getText();
+            MessageType type = MessageType.MESSAGE;
+            MessageDetail m = new MessageDetail(from, to, new Date(), content, type);
+        } catch (Exception e) {
+            Logger.getLogger(ClientBox.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_btnSendActionPerformed
 
     /**
      * @param args the command line arguments
