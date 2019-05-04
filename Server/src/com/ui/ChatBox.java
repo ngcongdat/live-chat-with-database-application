@@ -7,8 +7,10 @@ package com.ui;
 
 import com.business.ClientHandler;
 import com.business.ServerThread;
+import com.context.DBContext;
 import com.entity.MessageDetail;
 import com.entity.MessageType;
+import com.entity.Server;
 import java.util.Date;
 
 /**
@@ -98,12 +100,14 @@ public class ChatBox extends javax.swing.JDialog {
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // Send a message to client
         try {
-            String from = username;
-            String to = cs.getClient().getUsername();
+            String from = cs.getSocket().getInetAddress().getHostAddress();
+            String to = username;
+//            String to = cs.getClient().getUsername();
             String content = txtMessage.getText();
             MessageType type = MessageType.MESSAGE;
             MessageDetail m = new MessageDetail(from, to, new Date(), content, type);
             cs.send(m);
+            txtMessage.setText("");
         } catch (Exception ex) {
             System.out.println(ex);
         }

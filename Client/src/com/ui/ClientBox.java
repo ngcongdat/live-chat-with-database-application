@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -176,6 +177,8 @@ public class ClientBox extends javax.swing.JFrame {
             String content = txtMessage.getText();
             MessageType type = MessageType.MESSAGE;
             MessageDetail m = new MessageDetail(from, to, new Date(), content, type);
+            clientThread.send(m);
+            txtMessage.setText("");
         } catch (Exception e) {
             Logger.getLogger(ClientBox.class.getName()).log(Level.SEVERE, null, e);
         }

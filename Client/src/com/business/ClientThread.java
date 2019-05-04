@@ -72,7 +72,7 @@ public class ClientThread implements Runnable, Serializable {
                 if (obj instanceof MessageDetail) {
                     // Output receive message
                     MessageDetail m = (MessageDetail) obj;
-                    txtContent.append("\n" + m.getFromUser() + ":" + m.getContent());
+                    txtContent.append("\nServer: " + m.getContent());
                 }
             }
         } catch (IOException ex) {
@@ -87,7 +87,7 @@ public class ClientThread implements Runnable, Serializable {
         oos.writeObject(line);
         if (line instanceof MessageDetail) {
             MessageDetail m = (MessageDetail) line;
-            txtContent.append("\nMe:" + m.getContent());
+            txtContent.append("\nMe: " + m.getContent());
         }
     }
 

@@ -85,10 +85,10 @@ public class ClientHandler implements Runnable {
             // Receive data from client
             while(true) {
                 Object line = ois.readObject();
-                if(line instanceof MessageDAO) {
+                if(line instanceof MessageDetail) {
                     // Output content of message to textContent and save to database
                     MessageDetail m = (MessageDetail) line;
-                    txtContent.append("\n" + m.getFromUser() + ":" + m.getContent());
+                    txtContent.append("\n" + m.getFromUser() + ": " + m.getContent());
                     md.addMessageDetail(m);
                 }
             }
@@ -107,7 +107,7 @@ public class ClientHandler implements Runnable {
         if(line instanceof MessageDetail) {
             // Output content of message to textContent and save to database
             MessageDetail m = (MessageDetail) line;
-            txtContent.append("\nMe:" + m.getContent());
+            txtContent.append("\nMe: " + m.getContent());
             oos.writeObject(line);
             md.addMessageDetail(m);
         }
