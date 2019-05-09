@@ -12,31 +12,31 @@ import java.io.Serializable;
  * @author tiny
  */
 public class Users implements Serializable {
-    
-    private String username, displayName;
 
-    public Users() {
-    }
+  private String username, displayName;
 
-    public Users(String username, String displayName) {
-        this.username = username;
-        this.displayName = displayName;
-    }
+  public Users() {
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public Users(String username, String displayName) {
+    this.username = username;
+    this.displayName = displayName;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public String getDisplayName() {
-        return displayName;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-    
+  public String getDisplayName() {
+    return displayName;
+  }
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
 }

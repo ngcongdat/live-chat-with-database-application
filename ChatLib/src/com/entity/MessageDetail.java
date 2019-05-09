@@ -13,70 +13,70 @@ import java.util.Date;
  * @author tiny
  */
 public class MessageDetail implements Serializable {
-    
-    private int messageID;
-    private String fromUser, toUser;
-    private Date dateCreated;
-    private String content;
-    private MessageType messageType;
 
-    public MessageDetail() {
-    }
+  private int messageID;
+  private String fromUser, toUser;
+  private Date dateCreated;
+  private String content;
+  private MessageType messageType;
 
-    public MessageDetail(String fromUser, String toUser, Date dateCreated, String content, MessageType messageType) {
-        this.fromUser = fromUser;
-        this.dateCreated = dateCreated;
-        this.content = content;
-        this.messageType = messageType;
-        this.toUser = toUser;
-    }
+  public MessageDetail() {
+  }
 
-    public int getMessageID() {
-        return messageID;
-    }
+  public MessageDetail(String fromUser, String toUser, Date dateCreated, String content, MessageType messageType) {
+    this.fromUser = fromUser;
+    this.dateCreated = dateCreated;
+    this.content = content;
+    this.messageType = messageType;
+    this.toUser = toUser;
+  }
 
-    public void setMessageID(int messageID) {
-        this.messageID = messageID;
-    }
+  public int getMessageID() {
+    return messageID;
+  }
 
-    public String getFromUser() {
-        return fromUser;
-    }
+  public void setMessageID(int messageID) {
+    this.messageID = messageID;
+  }
 
-    public void setFromUser(String fromUser) {
-        this.fromUser = fromUser;
-    }
+  public String getFromUser() {
+    return fromUser;
+  }
 
-    public Date getDateCreated() {
-        return dateCreated;
-    }
+  public void setFromUser(String fromUser) {
+    this.fromUser = fromUser;
+  }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
+  public Date getDateCreated() {
+    return dateCreated;
+  }
 
-    public String getContent() {
-        return content;
-    }
+  public void setDateCreated(Date dateCreated) {
+    this.dateCreated = dateCreated;
+  }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+  public String getContent() {
+    return content;
+  }
 
-    public MessageType getMessageType() {
-        return messageType;
-    }
+  public void setContent(String content) {
+    this.content = content;
+  }
 
-    public void setMessageType(MessageType messageType) {
-        this.messageType = messageType;
-    }
+  public MessageType getMessageType() {
+    return messageType;
+  }
 
-    public void setToUser(String toUser) {
-        this.toUser = toUser;
-    }
+  public void setMessageType(MessageType messageType) {
+    this.messageType = messageType;
+  }
 
-    public String getToUser() {
-        return toUser;
-    }
-    
+  public void setToUser(String toUser) {
+    this.toUser = toUser;
+  }
+
+  public String getToUser() {
+    return toUser;
+  }
+
 }

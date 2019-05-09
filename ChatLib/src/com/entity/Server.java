@@ -12,32 +12,32 @@ import java.io.Serializable;
  * @author tiny
  */
 public class Server implements Serializable {
-    
-    private String host;
-    private int port;
 
-    public Server() {
-    }
+  private String host;
+  private int port;
 
-    public Server(String host, int port) {
-        this.host = host;
-        this.port = port;
-    }
+  public Server() {
+  }
 
-    public String getHost() {
-        return host;
-    }
+  public Server(String host, int port) {
+    this.host = host;
+    this.port = port;
+  }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
+  public String getHost() {
+    return host;
+  }
 
-    public int getPort() {
-        return port;
-    }
+  public void setHost(String host) {
+    this.host = host;
+  }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
-    
+  public int getPort() {
+    return port;
+  }
+
+  public void setPort(int port) {
+    this.port = port;
+  }
+
 }

@@ -12,5 +12,5 @@ import java.io.Serializable;
  * @author tiny
  */
 public enum MessageType implements Serializable {
-    LOGIN , MESSAGE, LOGOUT
+  LOGIN, MESSAGE, LOGOUT
 }

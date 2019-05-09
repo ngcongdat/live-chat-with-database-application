@@ -1,4 +1,7 @@
-USE livechat;
+CREATE DATABASE LiveChat;
+GO
+
+USE [LiveChat];
 GO
 
 CREATE TABLE MessageDetail (

@@ -13,52 +13,51 @@ import java.net.Socket;
  * @author tiny
  */
 public class Client implements Serializable {
-    
-    private String username, password;
-    private Socket socket;
 
-    @Override
-    public String toString() {
-        return username; //To change body of generated methods, choose Tools | Templates.
-    }
+  private String username, password;
+  private Socket socket;
 
-    
-    public Socket getSocket() {
-        return socket;
-    }
+  @Override
+  public String toString() {
+    return username; //To change body of generated methods, choose Tools | Templates.
+  }
 
-    public void setSocket(Socket socket) {
-        this.socket = socket;
-    }
-    
-    public String getUsername() {
-        return username;
-    }
+  public Socket getSocket() {
+    return socket;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public void setSocket(Socket socket) {
+    this.socket = socket;
+  }
 
-    public String getType() {
-        return password;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public void setType(String password) {
-        this.password = password;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public Client() {
-    }
+  public String getType() {
+    return password;
+  }
 
-    public Client(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+  public void setType(String password) {
+    this.password = password;
+  }
 
-    public Client(String username, String password, Socket socket) {
-        this.username = username;
-        this.password = password;
-        this.socket = socket;
-    }
-    
+  public Client() {
+  }
+
+  public Client(String username, String password) {
+    this.username = username;
+    this.password = password;
+  }
+
+  public Client(String username, String password, Socket socket) {
+    this.username = username;
+    this.password = password;
+    this.socket = socket;
+  }
+
 }

@@ -19,44 +19,44 @@ import java.util.List;
  */
 public class UserDAO {
 
-    // Return a list of available users in the system
-    public List<Users> selectAll() throws Exception {
-        String select = "select * from users";
-        Connection conn = new DBContext().getConnection();
-        PreparedStatement ps = conn.prepareStatement(select);
-        ResultSet rs = ps.executeQuery();
-        List<Users> users = new ArrayList<>();
-        while (rs.next()) {
-            String userName = rs.getString("username");
-            String displayName = rs.getString("displayName");
-            users.add(new Users(userName, displayName));
-        }
-        ps.close();
-        conn.close();
-        return users;
+  // Return a list of available users in the system
+  public List<Users> selectAll() throws Exception {
+    String select = "select * from Users";
+    Connection conn = new DBContext().getConnection();
+    PreparedStatement ps = conn.prepareStatement(select);
+    ResultSet rs = ps.executeQuery();
+    List<Users> users = new ArrayList<>();
+    while (rs.next()) {
+      String userName = rs.getString("username");
+      String displayName = rs.getString("displayName");
+      users.add(new Users(userName, displayName));
+    }
+    ps.close();
+    conn.close();
+    return users;
+  }
+
+  public void addUser(Users u) throws Exception {
+    List<Users> users = selectAll();
+    boolean foundUser = false;
+    // Check if users u exists or not
+    for (Users x : users) {
+      if (x.getUsername().equalsIgnoreCase(u.getUsername())) {
+        foundUser = true;
+      }
     }
 
-    public void addUser(Users u) throws Exception {
-        List<Users> users = selectAll();
-        boolean foundUser = false;
-        // Check if users u exists or not
-        for (Users x : users) {
-            if (x.getUsername().equalsIgnoreCase(u.getUsername())) {
-                foundUser = true;
-            }
-        }
-        
-        // Insert a given user u to Users table
-        if (!foundUser) {
-            String insert = "insert into Users values(?,?)";
-            Connection conn = new DBContext().getConnection();
-            PreparedStatement ps = conn.prepareStatement(insert);
-            ps.setString(1, u.getUsername());
-            ps.setString(2, u.getDisplayName());
-            ps.executeUpdate();
-            ps.close();
-            conn.close();
-        }
+    // Insert a given user u to Users table
+    if (!foundUser) {
+      String insert = "insert into Users values(?,?)";
+      Connection conn = new DBContext().getConnection();
+      PreparedStatement ps = conn.prepareStatement(insert);
+      ps.setString(1, u.getUsername());
+      ps.setString(2, u.getDisplayName());
+      ps.executeUpdate();
+      ps.close();
+      conn.close();
     }
+  }
 
 }
